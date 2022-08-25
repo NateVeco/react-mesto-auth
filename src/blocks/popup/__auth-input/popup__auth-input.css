@@ -1,0 +1,12 @@
+.popup__auth-input {
+  width: 100%;
+  margin-bottom: 30px;
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #cccccc;
+  border: none;
+  border-bottom: 2px solid #cccccc;
+  background-color: black;
+}

@@ -1,0 +1,14 @@
+.popup__auth-button-submit {
+  width: 358px;
+  margin-top: 186px;
+  padding: 14px 84px;
+  border: none;
+  border-radius: 2px;
+  background: white;
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  font-weight: 400;
+  color: black;
+}
