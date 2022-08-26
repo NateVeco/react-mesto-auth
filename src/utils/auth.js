@@ -8,7 +8,7 @@ const getResponse = (res) => {
     }
 };
 
-export const register = ({email, password }) => {
+export const register = ({ email, password }) => {
   return fetch(`${url}/signup`, {
     method: 'POST',
     headers: {
@@ -37,5 +37,5 @@ export function getInfo() {
       "Content-Type": "application/json",
       'Authorization': `Bearer ${token}`,
     }
-  }).then((res) => res.json());
+  }).then((res) => getResponse(res));
 };

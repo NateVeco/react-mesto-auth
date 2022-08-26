@@ -13,13 +13,13 @@ function infoTooltip({isOpen, onClose, isSuccess}) {
         ></button>
         <img
           className="popup__image-infotooltip"
-          src={isSuccess ? `${SuccessImage}` : `${ErrorImage}`}
+          src={isSuccess ? `${ErrorImage}` : `${SuccessImage}`}
           alt="статус"
         />
         <h2 className="popup__title-infotooltip">
           {isSuccess
-            ? "Вы успешно зарегистрировались!"
-            : "Что-то пошло не так! Попробуйте еще раз"}
+            ? "Что-то пошло не так! Попробуйте еще раз"
+            : "Вы успешно зарегистрировались!"}
         </h2>
       </div>
     </div>

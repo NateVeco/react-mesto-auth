@@ -29,7 +29,7 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] =
     React.useState(false);
-  const [isInfoTooltipSuccess, setInfoTooltipSuccess] = React.useState(null);
+  const [isInfoTooltipSuccess, setInfoTooltipSuccess] = React.useState(false);
   const history = useHistory();
 
   React.useEffect(() => {
@@ -157,16 +157,21 @@ function App() {
   }
 
   function onLogin(data) {
-    return auth.authorize(data).then(({ token }) => {
-        setLoggedIn(true);
-        localStorage.setItem('jwt', token);
-        setEmail(data.email);
-        history.push("/");
+    return auth.authorize(data)
+      .then(({ token }) => {
+        if ({ token }) {
+          setEmail(data.email);
+          setLoggedIn(true);
+          localStorage.setItem('jwt', token);
+          history.push("/");
+        }
+        else {
+          setInfoTooltipPopupOpen(true);
+          setInfoTooltipSuccess(true);
+        }
       })
       .catch((err) => {
         console.log(err);
-        setInfoTooltipPopupOpen(true);
-        setInfoTooltipSuccess(false);
       })
   }
 
@@ -177,10 +182,16 @@ function App() {
   }
 
   function onRegister(data) {
-    return auth.register(data).then(() => {
+    return auth.register(data)
+      .then(() => {
+        if (data) {
           setInfoTooltipSuccess(true);
           setInfoTooltipPopupOpen(true);
           history.push("/signin");
+        }
+        else {
+          setInfoTooltipSuccess(true);
+        }
       })
       .catch((err) => {
         console.log(err);
